@@ -112,7 +112,7 @@ export default {
                     <p>No changes have been made yet</p>
                     </div>
                     <div class="dark-bg">
-                    <h2>Peraturan</h2>
+                    <h2>Rules</h2>
                     <br>
                     <p>Every action is conducted in accordance with our guidelines. In order to guarantee a consistent experience, make sure to verify them before submitting a record!</p>
                     <br><br>
@@ -136,7 +136,7 @@ export default {
                         <iframe class="discord-box" src="https://discord.com/widget?id=1303563415066902619&theme=dark" width="270" height="300" allowtransparency="false" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
                     </div>
                     <div class="og" class="dark-bg">
-                        <p>Semua kredit pergi ke <a href="https://tsl.pages.dev/#/" target="_blank">TSL</a> untuk website dan <a href="https://tgdps-dl.pages.dev/#/" target="_blank">TGDPS Demonlist</a> untuk inspirasi layout, yang situs webnya merupakan replika dari ini. Ini tidak ada koneksi/afiliasi dengan TSL. List Original oleh <a href="https://me.redlimerl.com/" target="_blank">RedLime</a></p>
+                        <p>All credits goes to <a href="https://tsl.pages.dev/#/" target="_blank">TSL</a> for the website and <a href="https://tgdps-dl.pages.dev/#/" target="_blank">TGDPS Demonlist</a> for more features inspiration. This doesn't have any connection/affiliation with TSL. Original list by <a href="https://me.redlimerl.com/" target="_blank">RedLime</a></p>
                     </div>
                     <button class="btngl" @click="selected = 0">#1 Demon</button>
                     <button class="btngl" @click="selected = 75">Extended</button>
