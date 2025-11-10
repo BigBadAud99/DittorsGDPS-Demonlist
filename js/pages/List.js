@@ -51,7 +51,7 @@ export default {
                     <iframe class="video" id="videoframe" :src="video" frameborder="0"></iframe>
                     <ul class="stats">
                         <li>
-                            <div class="type-title-sm">Poin</div>
+                            <div class="type-title-sm">Points</div>
                             <p v-if="selected + 1 <= 75">{{ score(selected + 1, level.percentToQualify, level.percentToQualify) }} (100% = {{ score(selected + 1, 100, level.percentToQualify) }})</p>
                         </li>
                         <li>
@@ -59,8 +59,8 @@ export default {
                             <p>{{ level.id }}</p>
                         </li>
                         <li>
-                            <div class="type-title-sm">Kata sandi</div>
-                            <p>{{ level.password || 'Gratis copy' }}</p>
+                            <div class="type-title-sm">Password</div>
+                            <p>{{ level.password || 'Free copy' }}</p>
                         </li>
                         <li>
                             <div class="type-title-sm">Demon difficulty</div>
@@ -69,9 +69,9 @@ export default {
                     </ul>
                     <h2>Rekor</h2>
                     <p class="extended"><b>{{ level.records.length }}</b> rekor terdaftar</p>
-                    <p v-if="selected + 1 <= 75"><strong>{{ level.percentToQualify }}%</strong> atau lebih baik untuk kualifikasi</p>
-                    <p v-else-if="selected +1 <= 150"><strong>100%</strong> atau lebih baik untuk kualifikasi</p>
-                    <p v-else>Kamu dapat mengirimkan rekor untuk level ini, tetapi tidak ada poin list yang akan diberikan.</p>
+                    <p v-if="selected + 1 <= 75"><strong>{{ level.percentToQualify }}%</strong> or better to qualify</p>
+                    <p v-else-if="selected +1 <= 150"><strong>100%</strong> or better to qualify</p>
+                    <p v-else>You may send a record for this level, but no list points will be awarded.</p>
                     <table class="records">
                         <tr v-for="record in level.records" class="record">
                             <td class="percent">
@@ -109,16 +109,16 @@ export default {
                     <br>
                     <p class="extended">...</p>
                     <br><br>
-                    <p>Belum ada catatan perubahan</p>
+                    <p>No changes have been made yet</p>
                     </div>
                     <div class="dark-bg">
                     <h2>Peraturan</h2>
                     <br>
-                    <p>Setiap tindakan dilakukan sesuai dengan aturan kami. Untuk menjamin pengalaman yang konsisten, pastikan untuk memverifikasinya sebelum mengirim rekor!</p>
+                    <p>Every action is conducted in accordance with our guidelines. In order to guarantee a consistent experience, make sure to verify them before submitting a record!</p>
                     <br><br>
-                    <a class="btngl" href="/extended-page/rules.html">Halaman aturan</a>
+                    <a class="btngl" href="/extended-page/rules.html">Guidelines</a>
                     <br><br><br>
-                    <a class="btngl" href="/extended-page/faq.html">Penempatan list</a>
+                    <a class="btngl" href="/extended-page/faq.html">FAQ</a>
                     </div>
                     <div class="dark-bg" v-if="editors">
                         <h3>List Staff:</h3>
@@ -139,8 +139,8 @@ export default {
                         <p>Semua kredit pergi ke <a href="https://tsl.pages.dev/#/" target="_blank">TSL</a> untuk website dan <a href="https://tgdps-dl.pages.dev/#/" target="_blank">TGDPS Demonlist</a> untuk inspirasi layout, yang situs webnya merupakan replika dari ini. Ini tidak ada koneksi/afiliasi dengan TSL. List Original oleh <a href="https://me.redlimerl.com/" target="_blank">RedLime</a></p>
                     </div>
                     <button class="btngl" @click="selected = 0">#1 Demon</button>
-                    <button class="btngl" @click="selected = 75">Tambahan</button>
-                    <button class="btngl" @click="selected = 150">Legasi</button>
+                    <button class="btngl" @click="selected = 75">Extended</button>
+                    <button class="btngl" @click="selected = 150">Legacy</button>
                 </div>
             </div>
         </main>
