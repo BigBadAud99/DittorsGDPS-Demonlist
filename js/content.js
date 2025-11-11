@@ -1,19 +1,23 @@
 import { round, score } from "./score.js";
+import { resetList } from './pages/List.js';
+import { resetLeaderboard } from './pages/Leaderboard.js';
+
 
 /**
  * Path to directory containing `_list.json` and all levels
  */
+var theList = "dl"
 const dir = "/data";
 
 export async function fetchList() {
-    const listResult = await fetch(`${dir}/_list.json`);
-    const packResult = await fetch(`${dir}/_packlist.json`);
+    const listResult = await fetch(`${dir}/${theList}/_list.json`);
+    const packResult = await fetch(`${dir}/${theList}/_packlist.json`);
     try {
         const list = await listResult.json();
         const packsList = await packResult.json();
         return await Promise.all(
             list.map(async (path, rank) => {
-                const levelResult = await fetch(`${dir}/${path}.json`);
+                const levelResult = await fetch(`${dir}/${theList}/${path}.json`);
                 try {
                     const level = await levelResult.json();
                     let packs = packsList.filter((x) =>
@@ -45,7 +49,7 @@ export async function fetchList() {
 
 export async function fetchEditors() {
     try {
-        const editorsResults = await fetch(`${dir}/_editors.json`);
+        const editorsResults = await fetch(`${dir}/${theList}/_editors.json`);
         const editors = await editorsResults.json();
         return editors;
     } catch {
@@ -55,7 +59,7 @@ export async function fetchEditors() {
 
 export async function fetchLeaderboard() {
     const list = await fetchList();
-    const packResult = await (await fetch(`${dir}/_packlist.json`)).json();
+    const packResult = await (await fetch(`${dir}/${theList}/_packlist.json`)).json();
     const scoreMap = {};
     const errs = [];
     const packMultiplier = 2;
@@ -183,7 +187,7 @@ export async function fetchLeaderboard() {
 
 export async function fetchPacks() {
     try {
-        const packResult = await fetch(`${dir}/_packlist.json`);
+        const packResult = await fetch(`${dir}/${theList}/_packlist.json`);
         const packsList = await packResult.json();
         return packsList;
     } catch {
@@ -192,13 +196,13 @@ export async function fetchPacks() {
 }
 
 export async function fetchPackLevels(packname) {
-    const packResult = await fetch(`${dir}/_packlist.json`);
+    const packResult = await fetch(`${dir}/${theList}/_packlist.json`);
     const packsList = await packResult.json();
     const selectedPack = await packsList.find((pack) => pack.name == packname);
     try {
         return await Promise.all(
             selectedPack.levels.map(async (path, rank) => {
-                const levelResult = await fetch(`${dir}/${path}.json`);
+                const levelResult = await fetch(`${dir}/${theList}/${path}.json`);
                 try {
                     const level = await levelResult.json();
                     return [
