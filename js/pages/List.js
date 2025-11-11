@@ -118,7 +118,7 @@ export default {
                     <br><br>
                     <a class="btngl" href="/extended-page/rules.html">Guidelines</a>
                     <br><br><br>
-                    <a class="btngl" href="/extended-page/faq.html">FAQ</a>
+                    <a class="btngl" href="/extended-page/faq.html">List Placement</a>
                     </div>
                     <div class="dark-bg" v-if="editors">
                         <h3>List Staff:</h3>
