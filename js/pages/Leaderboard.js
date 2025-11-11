@@ -130,3 +130,13 @@ export default {
         getYoutubeIdFromUrl,
     },
 };
+export async function resetLeaderboard() {
+    store.leaderboard.loading = true;
+
+    const [leaderboard, err] = await fetchLeaderboard();
+
+    store.leaderboard.leaderboard = leaderboard;
+    store.leaderboard.err = err;
+    // Hide loading spinner
+    store.leaderboard.loading = false;
+    }
