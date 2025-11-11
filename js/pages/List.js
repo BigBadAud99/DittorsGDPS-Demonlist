@@ -67,8 +67,8 @@ export default {
                             <p>{{ level.difficulty || 'Demon' }}</p>
                         </li>
                     </ul>
-                    <h2>Rekor</h2>
-                    <p class="extended"><b>{{ level.records.length }}</b> rekor terdaftar</p>
+                    <h2>Record</h2>
+                    <p class="extended"><b>{{ level.records.length }}</b> records registered</p>
                     <p v-if="selected + 1 <= 75"><strong>{{ level.percentToQualify }}%</strong> or better to qualify</p>
                     <p v-else-if="selected +1 <= 150"><strong>100%</strong> or better to qualify</p>
                     <p v-else>You may send a record for this level, but no list points will be awarded.</p>
