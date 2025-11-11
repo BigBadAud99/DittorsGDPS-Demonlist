@@ -171,6 +171,15 @@ export default {
             );
         },
     },
+    async mounted() {
+        store.list = this;
+        await resetList();
+    },
+    methods: {
+        embed,
+        score,
+    },
+};
     export async function resetList() {
     console.log("resetting");
     
