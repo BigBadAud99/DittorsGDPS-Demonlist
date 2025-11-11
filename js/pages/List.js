@@ -171,33 +171,32 @@ export default {
             );
         },
     },
-    async mounted() {
-        // Hide loading spinner
-        this.list = await fetchList();
-        this.editors = await fetchEditors();
+    export async function resetList() {
+    console.log("resetting");
+    
+    store.list.loading = true;
 
-        // Error handling
-        if (!this.list) {
-            this.errors = [
-                "Failed to load list. Retry in a few minutes or notify list staff.",
-            ];
-        } else {
-            this.errors.push(
-                ...this.list
-                    .filter(([_, err]) => err)
-                    .map(([_, err]) => {
-                        return `Failed to load level. (${err}.json)`;
-                    })
-            );
-            if (!this.editors) {
-                this.errors.push("Failed to load list editors.");
-            }
+    // Hide loading spinner
+    store.list.list = await fetchList();
+    store.list.editors = await fetchEditors();
+
+    // Error handling
+    if (!store.list.list) {
+        store.list.errors = [
+            "Failed to load list. Retry in a few minutes or notify list staff.",
+        ];
+    } else {
+        store.list.errors.push(
+            ...store.list.list
+                .filter(([_, err]) => err)
+                .map(([_, err]) => {
+                    return `Failed to load level. (${err}.json)`;
+                })
+        );
+        if (!store.list.editors) {
+            store.list.errors.push("Failed to load list editors.");
         }
+    }
 
-        this.loading = false;
-    },
-    methods: {
-        embed,
-        score,
-    },
-};
+    store.list.loading = false;
+}
