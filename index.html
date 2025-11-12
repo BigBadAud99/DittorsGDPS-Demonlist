@@ -40,7 +40,10 @@
         <header :class="{ dark: store.dark }">
             <div class="logo">
                 <img src="/images/icon.png" width="50" height="50">
-                <h2 style="line-height:4rem;">DTGDDL</h2>
+                <h2 style="line-height:4rem;"><select onchange="onChangeList()" class="btn-no-cover" id="list_dropdown">
+                        <option value="dl">DTGDDL</option>
+                        <option value="cl">DTGDCL</option>
+                </select></h2>
                 <p style="line-height:4rem;">v1.0.0</p>
             </div>
             <nav class="nav">
@@ -66,10 +69,6 @@
                             alt=""
                         />
                     </button>
-                     <select onchange="onChangeList()" class="btn-no-cover" id="list_dropdown">
-                        <option value="dl">Demonlist</option>
-                        <option value="cl">Challenge List</option>
-                    </select>
                 </div>
             </nav>
         </header>
