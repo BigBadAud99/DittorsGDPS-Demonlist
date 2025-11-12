@@ -219,3 +219,32 @@ input[type="checkbox"] {
     outline: none;
     background-color: var(--color-background);
 }
+.mentions {
+    margin: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: var(--color-background-hover);
+    color: var(--color-on-background);
+}
+.mentions ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+.mentions li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    padding: 6px 10px;
+    birder-radius: 6px;
+    background: var(--color-background);
+    transition: background 0.2s;
+}
+.mentions li:hover {
+    background: var(--color-background-hover);
+}
+.role-tag {
+    color: var(--color-extended);
+    font-weight: bold;
+    font-size: 0.9em;
+}
