@@ -30,7 +30,7 @@ export default {
                         </td>
                         <td class="level" :class="{ 'active': selected == i, 'error': !level }">
                             <div class="item" @click="toggleThumb(i)">
-                            <button @click="selected = i">
+                            <button class="btn-no-cover">
                                 <span class="type-label-lg">{{ level?.name || \`Error (\${err}.json)\` }}</span>
                             </button>
                             <div 
