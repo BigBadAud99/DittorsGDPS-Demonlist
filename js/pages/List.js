@@ -27,7 +27,8 @@ export default {
                 v-model="searchQuery"
                 type="text"
                 placeholder="Search levels..."
-                class="search-input">
+                class="search-input"
+                />
             </div>
             <div v-if="userMentions.length && searchQuery" class="mentions dark-bg">
               <p><strong>User is mentioned at:</strong></p>
@@ -38,7 +39,7 @@ export default {
                 </li>
               </ul>
             </div>
-                <table class="list" v-if="fileteredList">
+                <table class="list" v-if="filteredList">
                     <tr v-for="([level, err], i) in filteredList">
                       ...
                     </tr>
