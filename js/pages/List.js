@@ -30,19 +30,17 @@ export default {
                 class="search-input"
                 />
             </div>
-            <div v-if="userMentions.length && searchQuery" class="mentions dark-bg">
+            <div v-if="userMentions.length && searchQuery && list.length" class="mentions dark-bg">
               <p><strong>User is mentioned at:</strong></p>
               <ul>
                 <li v-for="mention in userMentions" :key="mention.level.name">
                   <span>{{ mention.level.name }}</span>
-                  <span clas="role-tag">({{ mention.role }})</span>
+                  <span class="role-tag">({{ mention.role }})</span>
                 </li>
               </ul>
             </div>
                 <table class="list" v-if="filteredList">
                     <tr v-for="([level, err], i) in filteredList">
-                      ...
-                    </tr>
                         <td class="rank">
                             <p v-if="i + 1 <= 150" class="type-label-lg">#{{ i + 1 }}</p>
                             <p v-else class="type-label-lg">Legacy</p>
@@ -201,7 +199,7 @@ export default {
 
         userMentions() {
           if (!this.searchQuery) return [];
-          const q = this.searchQuery.toLowercase();
+          const q = this.searchQuery.toLowerCase();
           const mentions = [];
 
           for (const [level] of this.list) {
@@ -216,7 +214,6 @@ export default {
               mentions.push({ level, role: "Creator"});
             }
         }
-
         return mentions;
     },
     async mounted() {
