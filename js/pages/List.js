@@ -29,9 +29,14 @@ export default {
                             <p v-else class="type-label-lg">Legacy</p>
                         </td>
                         <td class="level" :class="{ 'active': selected == i, 'error': !level }">
+                            <div class="item" @click="toggleThumb(i)">
                             <button @click="selected = i">
                                 <span class="type-label-lg">{{ level?.name || \`Error (\${err}.json)\` }}</span>
                             </button>
+                            <div 
+                                class="thumbnail"
+                                :class="{ show: showThumbnails[i]}"
+                                :style="{ backgroundImage: `url(${level.thumbnail})`}">
                         </td>
                     </tr>
                 </table>
@@ -156,6 +161,7 @@ export default {
         roleIconMap,
         store,
         toggledShowcase: false,
+        showThumbnails: [],
     }),
     computed: {
         level() {
@@ -180,6 +186,9 @@ export default {
     methods: {
         embed,
         score,
+        toggleThumb(index) {
+            this.$set(this.showThumbnails, index, !this.showThumbnails[index]);
+        }
     },
 };
     export async function resetList() {
