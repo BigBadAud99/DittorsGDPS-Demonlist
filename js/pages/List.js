@@ -221,7 +221,6 @@ export default {
         embed,
         score,
     },
-};
     export async function resetList() {
     console.log("resetting");
     
