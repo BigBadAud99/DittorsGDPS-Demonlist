@@ -21,14 +21,14 @@ export default {
             <Spinner></Spinner>
         </main>
         <main v-else class="page-list">
-            <div class="list-container">
-            <div class="search-bar darl-bg">
+         <div class="search-bar dark-bg">
               <input
                 v-model="searchQuery"
                 type="text"
                 placeholder="Search levels"
                 class="search-input">
             </div>
+            <div class="list-container">
                 <table class="list" v-if="list">
                     <tr v-for="([level, err], i) in filteredList">
                         <td class="rank">
