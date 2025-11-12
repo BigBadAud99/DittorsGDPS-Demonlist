@@ -101,7 +101,6 @@ export default {
                             <td class="legacy">
                                 <img v-if="record.legacy" :src="\`/assets/legacy.svg\`" alt="Legacy" title="Legacy Record">
                             </td>
-                                <a :href="record.link" target="_blank" class="type-label-lg">{{ record.user }}</a>
                             </td>
                             <td class="mobile">
                                 <img v-if="record.mobile" :src="\`/assets/phone-landscape\${store.dark ? '-dark' : ''}.svg\`" alt="Mobile">
@@ -150,7 +149,6 @@ export default {
                             </li>
                         </ol>
                     </div>
-                    </template>
                     <div class="og">
                         <iframe class="discord-box" src="https://discord.com/widget?id=1303563415066902619&theme=dark" width="270" height="300" allowtransparency="false" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
                     </div>
