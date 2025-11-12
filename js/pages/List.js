@@ -26,18 +26,9 @@ export default {
               <input
                 v-model="searchQuery"
                 type="text"
-                placeholder="Search levels..."
+                placeholder="Search levels/users"
                 class="search-input"
                 />
-            </div>
-            <div v-if="userMentions && searchQuery && list.length" class="mentions dark-bg">
-              <p><strong>User is mentioned at:</strong></p>
-              <ul>
-                <li v-for="mention in userMentions" :key="mention.level.name">
-                  <span>{{ mention.level.name }}</span>
-                  <span class="role-tag">({{ mention.role }})</span>
-                </li>
-              </ul>
             </div>
                 <table class="list" v-if="Array.isArray(filteredList) && filteredList.length">
                     <tr v-for="([level, err], i) in filteredList" :key="i">
@@ -193,22 +184,6 @@ export default {
     const q = this.searchQuery.toLowerCase();
     return this.list.filter(([level, err]) => level && level.name.toLowerCase().includes(q));
   },
-  userMentions() {
-    if (!this.searchQuery) return [];
-    const q = this.searchQuery.toLowerCase();
-    const mentions = [];
-    for (const [level] of this.list) {
-      if (!level) continue;
-      if (level.verifier?.toLowerCase().includes(q)) {
-        mentions.push({ level, role: "Verifier" });
-      } else if (level.author?.toLowerCase().includes(q)) {
-        mentions.push({ level, role: "Author" });
-      } else if (Array.isArray(level.creators) && level.creators.some(c => c.toLowerCase().includes(q))) {
-        mentions.push({ level, role: "Creator" });
-      }
-    }
-    return mentions;
-  },
 },
     async mounted() {
         store.list = this;
@@ -226,7 +201,6 @@ export async function resetList() {
 
     // Load data
     store.list.list = await fetchList();
-    console.log("Fetched list (raw):", JSON.parse(JSON.stringify(store.list.list)));
     store.list.editors = await fetchEditors();
 
     // Error handling
