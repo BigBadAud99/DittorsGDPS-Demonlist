@@ -21,7 +21,7 @@ export async function fetchList() {
                 try {
                     const level = await levelResult.json();
                     if (!level.thumbnail) {
-                        level.thumbnail = `/assets/thumbs/default.jpg`
+                        level.thumbnail = `https://raw.githubusercontent.com/Dittor-Aud/DT-Level-Thumbnails/refs/heads/DT-Level-Thumbnails/resources/noThumb.png`
                     }
                     let packs = packsList.filter((x) =>
                         x.levels.includes(path)
