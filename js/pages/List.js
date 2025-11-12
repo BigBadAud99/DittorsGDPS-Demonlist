@@ -14,7 +14,7 @@ const roleIconMap = {
     trial: "user-lock",
 };
 
-export default {
+export default {     
     components: { Spinner, LevelAuthors },
     template: `
         <main v-if="loading">
@@ -176,6 +176,7 @@ export default {
         level() {
             return this.list[this.selected][0];
         },
+    },
         video() {
             if (!this.level.showcase) {
                 return embed(this.level.verification);
@@ -217,15 +218,11 @@ export default {
         store.list = this;
         await resetList();
     },
-        methods: {
-        embed,
-        score,
+    methods: {
+        embed, 
+        score
     },
-} // ✅ closes the Vue component definition fully
-
-// ---------------------------------------------------------
-// Separate helper function (NOT inside the export default):
-// ---------------------------------------------------------
+};
 export async function resetList() {
     console.log("resetting");
 
