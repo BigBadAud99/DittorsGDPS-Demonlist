@@ -39,7 +39,7 @@ export default {
                 </li>
               </ul>
             </div>
-                <table class="list" v-if="filteredList">
+                <table class="list" v-if="filteredList.length">
                     <tr v-for="([level, err], i) in filteredList" :key="i">
                         <td class="rank">
                             <p v-if="i + 1 <= 150" class="type-label-lg">#{{ i + 1 }}</p>
@@ -100,7 +100,6 @@ export default {
                             </td>
                             <td class="legacy">
                                 <img v-if="record.legacy" :src="\`/assets/legacy.svg\`" alt="Legacy" title="Legacy Record">
-                            </td>
                             </td>
                             <td class="mobile">
                                 <img v-if="record.mobile" :src="\`/assets/phone-landscape\${store.dark ? '-dark' : ''}.svg\`" alt="Mobile">
@@ -222,7 +221,7 @@ export default {
         embed,
         score,
     },
-};
+    };
     export async function resetList() {
     console.log("resetting");
     
