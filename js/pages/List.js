@@ -183,7 +183,9 @@ export default {
         filteredList() {
           if (!this.searchQuery) return this.list;
           const q = this.searchQuery.toLowerCase();
-          return this.list.filter(([level, err]) => level && level.name.toLowerCase().includes(q)
+          return this.list.filter(([level, err]) => level && level.name.toLowerCase().includes(q) || 
+              level.author.toLowerCase().includes(q) || 
+              level.verifier.toLowerCase().includes(q)
           );
         },
     },
