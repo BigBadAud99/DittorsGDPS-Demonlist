@@ -221,7 +221,7 @@ export default {
         embed,
         score,
     },
-}; // ✅ closes the Vue component definition fully
+} // ✅ closes the Vue component definition fully
 
 // ---------------------------------------------------------
 // Separate helper function (NOT inside the export default):
