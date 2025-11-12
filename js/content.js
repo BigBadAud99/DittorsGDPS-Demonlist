@@ -20,6 +20,9 @@ export async function fetchList() {
                 const levelResult = await fetch(`${dir}/${theList}/${path}.json`);
                 try {
                     const level = await levelResult.json();
+                    if (!level.thumbnail) {
+                        level.thumbnail = `/assets/thumbs/default.jpg`
+                    }
                     let packs = packsList.filter((x) =>
                         x.levels.includes(path)
                     );
