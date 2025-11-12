@@ -39,8 +39,8 @@ export default {
                 </li>
               </ul>
             </div>
-                <table class="list" v-if="filteredList.length">
-                    <tr v-for="([level, err], i) in filteredList">
+                <table class="list" v-if="Array.isArray(filteredList) && filteredList.length">
+                    <tr v-for="([level, err], i) in filteredList" :key="i">
                         <td class="rank">
                             <p v-if="i + 1 <= 150" class="type-label-lg">#{{ i + 1 }}</p>
                             <p v-else class="type-label-lg">Legacy</p>
@@ -190,6 +190,7 @@ export default {
             );
         },
         filteredList() {
+          if (!Array.isArray(this.list)) return [];
           if (!this.searchQuery) return this.list;
           const q = this.searchQuery.toLowerCase();
           return this.list.filter(([level, err]) => level && level.name.toLowerCase().includes(q)
