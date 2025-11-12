@@ -230,6 +230,7 @@ export async function resetList() {
 
     // Load data
     store.list.list = await fetchList();
+    console.log("Fetched list:", store.list.list);
     store.list.editors = await fetchEditors();
 
     // Error handling
