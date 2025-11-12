@@ -217,16 +217,21 @@ export default {
         store.list = this;
         await resetList();
     },
-    methods: {
+        methods: {
         embed,
         score,
     },
-    export async function resetList() {
+}; // ✅ closes the Vue component definition fully
+
+// ---------------------------------------------------------
+// Separate helper function (NOT inside the export default):
+// ---------------------------------------------------------
+export async function resetList() {
     console.log("resetting");
-    
+
     store.list.loading = true;
 
-    // Hide loading spinner
+    // Load data
     store.list.list = await fetchList();
     store.list.editors = await fetchEditors();
 
@@ -239,9 +244,7 @@ export default {
         store.list.errors.push(
             ...store.list.list
                 .filter(([_, err]) => err)
-                .map(([_, err]) => {
-                    return `Failed to load level. (${err}.json)`;
-                })
+                .map(([_, err]) => `Failed to load level. (${err}.json)`)
         );
         if (!store.list.editors) {
             store.list.errors.push("Failed to load list editors.");
