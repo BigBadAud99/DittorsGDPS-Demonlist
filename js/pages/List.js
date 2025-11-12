@@ -39,7 +39,7 @@ export default {
                 </li>
               </ul>
             </div>
-                <table class="list" v-if="filteredList.length">
+                <table class="list" v-if="filteredList?.length">
                     <tr v-for="([level, err], i) in filteredList" :key="i">
                         <td class="rank">
                             <p v-if="i + 1 <= 150" class="type-label-lg">#{{ i + 1 }}</p>
