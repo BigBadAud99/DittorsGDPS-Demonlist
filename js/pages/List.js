@@ -22,8 +22,15 @@ export default {
         </main>
         <main v-else class="page-list">
             <div class="list-container">
+            <div class="search-bar darl-bg">
+              <input
+                v-model="searchQuery"
+                type="text"
+                placeholder="Search levels"
+                class="search-input">
+            </div>
                 <table class="list" v-if="list">
-                    <tr v-for="([level, err], i) in list">
+                    <tr v-for="([level, err], i) in filteredList">
                         <td class="rank">
                             <p v-if="i + 1 <= 150" class="type-label-lg">#{{ i + 1 }}</p>
                             <p v-else class="type-label-lg">Legacy</p>
@@ -156,6 +163,7 @@ export default {
         roleIconMap,
         store,
         toggledShowcase: false,
+        searchQuery: "",
     }),
     computed: {
         level() {
@@ -171,6 +179,12 @@ export default {
                     ? this.level.showcase
                     : this.level.verification
             );
+        },
+        filteredList() {
+          if (!this.searchQuery) return this.list;
+          const q = this.searchQuery.toLowerCase();
+          return this.list.filter(([level, err]) => level && level.name.toLowerCase().includes(q)
+          );
         },
     },
     async mounted() {
