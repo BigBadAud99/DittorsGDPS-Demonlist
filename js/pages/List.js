@@ -35,8 +35,8 @@ export default {
                             </button>
                             <div 
                                 class="thumbnail"
-                                :class="{ show: showThumbnails[i]}"
-                                :style="{ backgroundImage: `url(${level.thumbnail})`}"
+                                :class="{ show: showThumbnails[i] }"
+                                :style="{ backgroundImage: `url(${level.thumbnail})` }"
                             ></div>
                           </div>
                         </td>
