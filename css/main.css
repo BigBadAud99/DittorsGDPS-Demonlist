@@ -200,3 +200,22 @@ input[type="checkbox"] {
     opacity: 1;
     height: 100px;
 }
+.search-bar {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+}
+.search-input {
+    width: 80%;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: var(--color-background-hover);
+    color: var(--color-on-background);
+    transition:background 0.3s;
+}
+.search-input:focus {
+    outline: none;
+    background-color: var(--color-background);
+}
