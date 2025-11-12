@@ -174,48 +174,42 @@ export default {
         searchQuery: "",
     }),
     computed: {
-        level() {
-            return this.list[this.selected][0];
-        },
-    },
-        video() {
-            if (!this.level.showcase) {
-                return embed(this.level.verification);
-            }
-
-            return embed(
-                this.toggledShowcase
-                    ? this.level.showcase
-                    : this.level.verification
-            );
-        },
-        filteredList() {
-          if (!Array.isArray(this.list)) return [];
-          if (!this.searchQuery) return this.list;
-          const q = this.searchQuery.toLowerCase();
-          return this.list.filter(([level, err]) => level && level.name.toLowerCase().includes(q)
-          );
-        },
-
-        userMentions() {
-          if (!this.searchQuery) return [];
-          const q = this.searchQuery.toLowerCase();
-          const mentions = [];
-
-          for (const [level] of this.list) {
-            if (!level) continue;
-            if (level.verifier && level.verifier.toLowerCase().includes(q)) {
-              mentions.push({ level, role: "Verifier" });
-            } else if (level.author && level.author.toLowerCase().includes(q)) {
-              mentions.push({ level, role: "Author" });
-            } else if (
-              Array.isArray(level.creators) && level.creators.some((c) => c.toLowerCase().includes(q))
-            ) {
-              mentions.push({ level, role: "Creator"});
-            }
-        }
-        return mentions;
-    },
+  level() {
+    return this.list[this.selected]?.[0];
+  },
+  video() {
+    if (!this.level?.showcase) {
+      return embed(this.level.verification);
+    }
+    return embed(
+      this.toggledShowcase
+        ? this.level.showcase
+        : this.level.verification
+    );
+  },
+  filteredList() {
+    if (!Array.isArray(this.list)) return [];
+    if (!this.searchQuery) return this.list;
+    const q = this.searchQuery.toLowerCase();
+    return this.list.filter(([level, err]) => level && level.name.toLowerCase().includes(q));
+  },
+  userMentions() {
+    if (!this.searchQuery) return [];
+    const q = this.searchQuery.toLowerCase();
+    const mentions = [];
+    for (const [level] of this.list) {
+      if (!level) continue;
+      if (level.verifier?.toLowerCase().includes(q)) {
+        mentions.push({ level, role: "Verifier" });
+      } else if (level.author?.toLowerCase().includes(q)) {
+        mentions.push({ level, role: "Author" });
+      } else if (Array.isArray(level.creators) && level.creators.some(c => c.toLowerCase().includes(q))) {
+        mentions.push({ level, role: "Creator" });
+      }
+    }
+    return mentions;
+  },
+},
     async mounted() {
         store.list = this;
         await resetList();
