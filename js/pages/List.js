@@ -30,7 +30,7 @@ export default {
                 class="search-input"
                 />
             </div>
-            <div v-if="userMentions?.length && searchQuery && list.length" class="mentions dark-bg">
+            <div v-if="userMentions && searchQuery && list.length" class="mentions dark-bg">
               <p><strong>User is mentioned at:</strong></p>
               <ul>
                 <li v-for="mention in userMentions" :key="mention.level.name">
