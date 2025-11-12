@@ -29,8 +29,19 @@ export default {
                 placeholder="Search levels..."
                 class="search-input">
             </div>
-                <table class="list" v-if="list">
+            <div v-if="userMentions.length && searchQuery" class="mentions dark-bg">
+              <p><strong>User is mentioned at:</strong></p>
+              <ul>
+                <li v-for="mention in userMentions" :key="mention.level.name">
+                  <span>{{ mention.level.name }}</span>
+                  <span clas="role-tag">({{ mention.role }})</span>
+                </li>
+              </ul>
+            </div>
+                <table class="list" v-if="fileteredList">
                     <tr v-for="([level, err], i) in filteredList">
+                      ...
+                    </tr>
                         <td class="rank">
                             <p v-if="i + 1 <= 150" class="type-label-lg">#{{ i + 1 }}</p>
                             <p v-else class="type-label-lg">Legacy</p>
@@ -183,11 +194,29 @@ export default {
         filteredList() {
           if (!this.searchQuery) return this.list;
           const q = this.searchQuery.toLowerCase();
-          return this.list.filter(([level, err]) => level && level.name.toLowerCase().includes(q) || 
-              level.author.toLowerCase().includes(q) || 
-              level.verifier.toLowerCase().includes(q)
+          return this.list.filter(([level, err]) => level && level.name.toLowerCase().includes(q)
           );
         },
+
+        userMentions() {
+          if (!this.searchQuery) return [];
+          const q = this.searchQuery.toLowercase();
+          const mentions = [];
+
+          for (const [level] of this.list) {
+            if (!level) continue;
+            if (level.verifier && level.verifier.toLowerCase().includes(q)) {
+              mentions.push({ level, role: "Verifier" });
+            } else if (level.author && level.author.toLowerCase().includes(q)) {
+              mentions.push({ level, role: "Author" });
+            } else if (
+              Array.isArray(level.creators) && level.creators.some((c) => c.toLowerCase().includes(q))
+            ) {
+              mentions.push({ level, role: "Creator"});
+            }
+        }
+
+        return mentions;
     },
     async mounted() {
         store.list = this;
