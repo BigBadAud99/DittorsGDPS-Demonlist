@@ -38,7 +38,7 @@ export default {
                             </td>
                             <td class="user" :class="{ 'active': selected == i }">
                                 <button @click="selected = i">
-                                <span class="type-label-lg">{{ ientry.user }}</span>
+                                <span class="type-label-lg">{{ cleanName(ientry.user) }}</span>
                                 </button>
                             </td>
                             <td class="score">
@@ -50,7 +50,7 @@ export default {
                 </div>
                 <div class="player-container">
                     <div class="player">
-                        <h1>{{ entry.user }}</h1><p>#{{ selected + 1 }}</p>
+                        <h1>{{ cleanName(ientry.user) }}</h1><p>#{{ selected + 1 }}</p>
                         <h3 v-if="entry.total > 0"><b>{{ localize(entry.total) }}</b></h3>
                         <p>Pack Bonus: {{ entry.packBonus }}</p>
                         <div class="packs" v-if="entry.packs.length > 0">
@@ -128,6 +128,9 @@ export default {
     methods: {
         localize,
         getYoutubeIdFromUrl,
+        cleanName(name) {
+        return name.replace(/\(cbf\)/ig, "").trim();
+    }
     },
 };
 export async function resetLeaderboard() {
