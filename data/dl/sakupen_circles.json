@@ -3,7 +3,7 @@
   "name": "Sakupen Circles",
   "author": "Diamond",
   "creators": ["Muffy450 (host), Nick24, DrCuber, korewa, Renn241, Mzero, Endevvor, NineDice, GhostVandalf"],
-  "verifier": "Diamond (cbf)",
+  "verifier": "Diamond",
   "difficulty": "Extreme Demon",
   "password": "Free copy",
   "tag": "nine circles",
@@ -16,8 +16,6 @@
     "link": "https://youtu.be/VKbsTIFSKP4?si=6pv1U6rTjDOhSlsP",
     "percent": 100,
     "hz": 360,
-    "cbf": true,
-    "mobile": true
     }
   ]
 }
