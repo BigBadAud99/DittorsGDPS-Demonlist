@@ -21,7 +21,7 @@ export default {
             <p class="type-body">
                 <span>{{ clean(author) }}</span>
                 <img v-if="isCBF(author)" 
-                     src="/image/logo.png" 
+                     src="/images/logo.png" 
                      class="cbf-icon"
                      title="Uses CBF"
                      @click="$emit('cbf')">
@@ -29,7 +29,7 @@ export default {
 
             <!-- CREATORS -->
             <template v-if="creators.length > 0">
-                <div class="type-title-sm">Kreator:</div>
+                <div class="type-title-sm">Creator:</div>
                 <p class="type-body">
                     <template 
                         v-for="(creator, index) in creators" 
@@ -37,7 +37,7 @@ export default {
                         
                         <span>{{ clean(creator) }}</span>
                         <img v-if="isCBF(creator)" 
-                             src="/image/logo.png" 
+                             src="/images/logo.png" 
                              class="cbf-icon"
                              title="Uses CBF"
                              @click="$emit('cbf')">
@@ -52,7 +52,7 @@ export default {
             <p class="type-body">
                 <span>{{ clean(verifier) }}</span>
                 <img v-if="isCBF(verifier)" 
-                     src="/image/logo.png" 
+                     src="/images/logo.png" 
                      class="cbf-icon"
                      title="Uses CBF"
                      @click="$emit('cbf')">
