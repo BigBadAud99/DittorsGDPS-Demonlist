@@ -38,7 +38,7 @@ export default {
                             </td>
                             <td class="user" :class="{ 'active': selected == i }">
                                 <button @click="selected = i">
-                                <span class="type-label-lg">{{ cleanName(ientry.user) }}</span>
+                                <span class="type-label-lg">{{ cleanName(entry.user) }}</span>
                                 </button>
                             </td>
                             <td class="score">
