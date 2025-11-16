@@ -287,6 +287,13 @@ input[type="checkbox"] {
     border-radius: 6px;
     cursor: pointer;
 }
+.type-body {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; /* so creators still break nicely */
+    gap: 6px;
+}
+
 .records .user {
     display: flex;
     align-items: center;
