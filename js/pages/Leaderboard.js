@@ -28,7 +28,7 @@ export default {
                 </div>
                 <div class="board-container">
                     <table class="board">
-                        <tr v-for="(ientry, i) in leaderboard">
+                        <tr v-for="(ientry, i) in leaderboard" v-if="ientry">
                             <td class="rank">
                             <p v-if="i + 1 === 1" class="type-label-lg" class="top1">#{{ i + 1 }}</p>
                                 <p v-else-if="i + 1 === 2" class="type-label-lg" class="top2">#{{ i + 1 }}</p>
@@ -114,9 +114,9 @@ export default {
         </main>
     `,
     computed: {
-        entry() {
-            return this.leaderboard[this.selected];
-        },
+       entry() {
+    return this.leaderboard[this.selected] || {};
+},
     },
     async mounted() {
         const [leaderboard, err] = await fetchLeaderboard();
@@ -129,6 +129,7 @@ export default {
         localize,
         getYoutubeIdFromUrl,
         cleanName(name) {
+        if (!name) return "";
         return name.replace(/\(cbf\)/ig, "").trim();
     }
     },
