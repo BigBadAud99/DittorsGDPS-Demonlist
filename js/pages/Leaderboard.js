@@ -151,7 +151,7 @@ export default {
           },
         isCBF(record) {
     return record && record.cbf === true;
-       }
+       },
     },
 };
 export async function resetLeaderboard() {
