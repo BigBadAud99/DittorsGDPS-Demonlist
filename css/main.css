@@ -295,7 +295,10 @@ input[type="checkbox"] {
 .table .level {
     display: flex;
     align-items: center;
+    gap: 6px;
+    white-space: nowrap; /* prevents breaking into multiple lines */
 }
+
 
 .cbf-icon {
     width: 18px;
