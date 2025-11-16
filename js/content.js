@@ -90,7 +90,6 @@ export async function fetchLeaderboard() {
             score: score(rank + 1, 100, level.percentToQualify),
             link: level.verification,
             path: level.path,
-            cbf: (level.verifier || "").toLowerCase().includes("(cbf)"),
         });
         // Records
         level.records.forEach((record) => {
@@ -113,7 +112,6 @@ export async function fetchLeaderboard() {
                     score: score(rank + 1, 100, level.percentToQualify),
                     link: record.link,
                     path: level.path,
-                    cbf: record.cbf === true,
                 });
                 return;
             }
@@ -125,7 +123,6 @@ export async function fetchLeaderboard() {
                 score: score(rank + 1, record.percent, level.percentToQualify),
                 link: record.link,
                 path: level.path,
-                cbf: record.cbf === true,
             });
         });
     });
