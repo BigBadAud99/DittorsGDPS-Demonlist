@@ -87,9 +87,7 @@ export default {
                                 <p v-else>{{ record.percent }}%</p>
                             </td>
                             <td class="user">
-                                <a :href="record.link" target="_blank" class="type-label-lg">{{ record.user }}</a>
-
-                                <img
+                                <a :href="record.link" target="_blank" class="type-label-lg">{{ record.user }}</a> <img
                                     v-if="record.cbf"
                                     @click="openCBFmodal"
                                     src="/images/logo.png"
