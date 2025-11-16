@@ -88,7 +88,7 @@ export default {
                             </td>
                             <td class="user">
                                 <a :href="record.link" target="_blank" class="type-label-lg">{{ record.user }}</a> <img
-                                    v-if="record.cbf"
+                                    v-if="record.cbf === true"
                                     @click="openCBFModal"
                                     src="/images/logo.png"
                                     class="cbf-icon"
@@ -108,7 +108,7 @@ export default {
                     </table>
                 </div>
                 <div v-else class="level" style="height: 100%; justify-content: center; align-items: center;">
-                    <p>(ノಠ益ಠ)ノ彡┻━┻</p>
+                    <p>Asu rusak</p>
                 </div>
             </div>
             <div class="meta-container">
