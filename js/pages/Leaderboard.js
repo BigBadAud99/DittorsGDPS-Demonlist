@@ -75,7 +75,10 @@ export default {
                         <p v-else class="extended" :style="{ color: score.rank > 150 ? 'var(--color-legacy)' : legacy }">#{{ score.rank }}</p>
                         </td>
                         <td class="level">
-                            <a class="type-label-lg" target="_blank" :href="score.link">{{ score.level }}</a>
+                            <a class="type-label-lg" target="_blank" :href="score.link">{{ score.level }}</a> <img v-if="isCBF(score)" 
+     src="/images/logo.png" 
+     class="cbf-icon" 
+     title="Verified with CBF">
                         </td>
                         <td class="score">
                         <p v-if="score.score > 0" class="type-label-lg">+{{ localize(score.score) }}</p>
@@ -91,7 +94,10 @@ export default {
                                 <p v-else class="extended" :style="{ color: score.rank > 150 ? 'var(--color-legacy)' : legacy }">#{{ score.rank }}</p>
                                 </td>
                                 <td class="level">
-                                    <a class="type-label-lg" target="_blank" :href="score.link">{{ score.level }}</a>
+                                    <a class="type-label-lg" target="_blank" :href="score.link">{{ score.level }}</a> <img v-if="isCBF(score)" 
+     src="/images/logo.png" 
+     class="cbf-icon" 
+     title="Completed with CBF">
                                 </td>
                                 <td class="score">
                                 <p v-if="score.score > 0" class="type-label-lg">+{{ localize(score.score) }}</p>
@@ -107,7 +113,10 @@ export default {
                                 <p v-else class="extended" :style="{ color: score.rank > 150 ? 'var(--color-legacy)' : legacy }">#{{ score.rank }}</p>
                                 </td>
                                 <td class="level">
-                                    <a class="type-label-lg" target="_blank" :href="score.link">{{ score.level }} ({{ score.percent }}%)</a>
+                                    <a class="type-label-lg" target="_blank" :href="score.link">{{ score.level }} ({{ score.percent }}%)</a> <img v-if="isCBF(score)" 
+     src="/images/logo.png" 
+     class="cbf-icon" 
+     title="Completed with CBF">
                                 </td>
                                 <td class="score">
                                 <p v-if="score.score > 0" class="type-label-lg">+{{ localize(score.score) }}</p>
@@ -139,7 +148,10 @@ export default {
         cleanName(name) {
         if (!name) return "";
         return name.replace(/\(cbf\)/ig, "").trim();
-    }
+          },
+        isCBF(record) {
+    return record && record.cbf === true;
+       }
     },
 };
 export async function resetLeaderboard() {
