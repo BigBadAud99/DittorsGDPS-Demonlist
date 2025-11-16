@@ -87,13 +87,7 @@ export default {
                                 <p v-else>{{ record.percent }}%</p>
                             </td>
                             <td class="user">
-                                <a :href="record.link" target="_blank" class="type-label-lg">{{ record.user }}</a> <img
-                                    v-if="record.cbf === true"
-                                    @click="openCBFModal"
-                                    src="/images/logo.png"
-                                    class="cbf-icon"
-                                    title="Uses CBF"
-                                    >
+                                <a :href="record.link" target="_blank" class="type-label-lg">{{ record.user }}</a>
                             </td>
                             <td class="legacy">
                                 <img v-if="record.legacy" :src="\`/assets/legacy.svg\`" alt="Legacy" title="Legacy Record">
@@ -156,12 +150,6 @@ export default {
                     <button class="btngl" @click="selected = 150">Legacy</button>
                 </div>
             </div>
-            <div class="cbf-modal" v-if="showCBF">
-                <div class="cbf-modal-content">
-                    <p>This user uses Click Between Frames to verify/complete the level.</p>
-                    <button class="btn-close" @click="showCBF = false">OK</button>
-                </div>
-            </div>
          </template>
         </main>
     `,
@@ -175,7 +163,6 @@ export default {
         store,
         toggledShowcase: false,
         searchQuery: "",
-        showCBF: false,
     }),
     computed: {
   level() {
@@ -205,9 +192,6 @@ export default {
     methods: {
         embed, 
         score,
-        openCBFModal() {
-            this.showCBF = true;
-        },
     },
 };
 export async function resetList() {
