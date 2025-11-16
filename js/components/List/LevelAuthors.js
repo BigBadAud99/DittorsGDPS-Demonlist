@@ -15,44 +15,68 @@ export default {
     },
     template: `
         <div class="level-authors">
-            <template v-if="selfVerified">
-                <div class="type-title-sm">Author:</div>
-                <p class="type-body">
-                    <span>{{ author }}</span>
-                </p>
-            </template>
-            <template v-else-if="creators.length === 0">
-                <div class="type-title-sm">Author:</div>
-                <p class="type-body">
-                    <span>{{ author }}</span>
-                </p>
-                <div class="type-title-sm">Verifier:</div>
-                <p class="type-body">
-                    <span>{{ verifier }}</span>
-                </p>
-            </template>
-            <template v-else>
+
+            <!-- AUTHOR -->
             <div class="type-title-sm">Author:</div>
-                <p class="type-body">
-                    <span>{{ author }}</span>
-                </p>
+            <p class="type-body">
+                <span>{{ clean(author) }}</span>
+                <img v-if="isCBF(author)" 
+                     src="/image/logo.png" 
+                     class="cbf-icon"
+                     title="Uses CBF"
+                     @click="$emit('cbf')">
+            </p>
+
+            <!-- CREATORS -->
+            <template v-if="creators.length > 0">
                 <div class="type-title-sm">Kreator:</div>
                 <p class="type-body">
-                    <template v-for="(creator, index) in creators" :key="\`creator-\$\{creator\}\`">
-                        <span >{{ creator }}</span
-                        ><span v-if="index < creators.length"> </span>
+                    <template 
+                        v-for="(creator, index) in creators" 
+                        :key="'creator-' + creator">
+                        
+                        <span>{{ clean(creator) }}</span>
+                        <img v-if="isCBF(creator)" 
+                             src="/image/logo.png" 
+                             class="cbf-icon"
+                             title="Uses CBF"
+                             @click="$emit('cbf')">
+
+                        <span v-if="index < creators.length"> </span>
                     </template>
                 </p>
-                <div class="type-title-sm">Verifier:</div>
-                <p class="type-body">
-                    <span>{{ verifier }}</span>
-                </p>
             </template>
+
+            <!-- VERIFIER -->
+            <div class="type-title-sm">Verifier:</div>
+            <p class="type-body">
+                <span>{{ clean(verifier) }}</span>
+                <img v-if="isCBF(verifier)" 
+                     src="/image/logo.png" 
+                     class="cbf-icon"
+                     title="Uses CBF"
+                     @click="$emit('cbf')">
+            </p>
+
+        </div>
     `,
 
     computed: {
         selfVerified() {
             return this.author === this.verifier && this.creators.length === 0;
-        },
+        }
     },
+
+    methods: {
+        // Detect "(cbf)" in name
+        isCBF(name) {
+            if (!name) return false;
+            return name.toLowerCase().includes("(cbf)");
+        },
+
+        // Clean display name
+        clean(name) {
+            return name.replace(/\(cbf\)/ig, "").trim();
+        }
+    }
 };
