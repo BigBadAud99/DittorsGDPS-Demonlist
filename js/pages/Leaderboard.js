@@ -55,7 +55,6 @@ export default {
   </table>
 </div>
 
-<!-- Player panel header (use entry, not ientry) -->
 <div class="player-container">
   <div class="player">
     <h1>{{ cleanName(entry.user) }}</h1>
