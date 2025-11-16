@@ -90,7 +90,7 @@ export async function fetchLeaderboard() {
             score: score(rank + 1, 100, level.percentToQualify),
             link: level.verification,
             path: level.path,
-            cbf: level.verifier.toLowerCase().includes("(cbf)"),
+            cbf: (level.verifier || "").toLowerCase().includes("(cbf)"),
         });
         // Records
         level.records.forEach((record) => {
