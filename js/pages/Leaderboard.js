@@ -42,7 +42,7 @@ export default {
 
         <td class="user" :class="{ 'active': selected === i }">
           <button @click="selected = i" type="button" class="player-btn">
-            <span class="type-label-lg">{{ cleanName(ientry.user) }}</span>
+            <span class="type-label-lg">{{ ientry.user }}</span>
           </button>
         </td>
 
@@ -57,7 +57,7 @@ export default {
 
 <div class="player-container">
   <div class="player">
-    <h1>{{ cleanName(entry.user) }}</h1>
+    <h1>{{ entry.user }}</h1>
     <p>#{{ selected + 1 }}</p>
                         <h3 v-if="entry.total > 0"><b>{{ localize(entry.total) }}</b></h3>
                         <p>Pack Bonus: {{ entry.packBonus }}</p>
@@ -75,10 +75,7 @@ export default {
                         <p v-else class="extended" :style="{ color: score.rank > 150 ? 'var(--color-legacy)' : legacy }">#{{ score.rank }}</p>
                         </td>
                         <td class="level">
-                            <a class="type-label-lg" target="_blank" :href="score.link">{{ score.level }}</a> <img v-if="isCBF(score)" 
-     src="/images/logo.png" 
-     class="cbf-icon" 
-     title="Verified with CBF">
+                            <a class="type-label-lg" target="_blank" :href="score.link">{{ score.level }}</a>
                         </td>
                         <td class="score">
                         <p v-if="score.score > 0" class="type-label-lg">+{{ localize(score.score) }}</p>
@@ -94,10 +91,7 @@ export default {
                                 <p v-else class="extended" :style="{ color: score.rank > 150 ? 'var(--color-legacy)' : legacy }">#{{ score.rank }}</p>
                                 </td>
                                 <td class="level">
-                                    <a class="type-label-lg" target="_blank" :href="score.link">{{ score.level }}</a> <img v-if="isCBF(score)" 
-     src="/images/logo.png" 
-     class="cbf-icon" 
-     title="Completed with CBF">
+                                    <a class="type-label-lg" target="_blank" :href="score.link">{{ score.level }}</a>
                                 </td>
                                 <td class="score">
                                 <p v-if="score.score > 0" class="type-label-lg">+{{ localize(score.score) }}</p>
@@ -113,10 +107,7 @@ export default {
                                 <p v-else class="extended" :style="{ color: score.rank > 150 ? 'var(--color-legacy)' : legacy }">#{{ score.rank }}</p>
                                 </td>
                                 <td class="level">
-                                    <a class="type-label-lg" target="_blank" :href="score.link">{{ score.level }} ({{ score.percent }}%)</a> <img v-if="isCBF(score)" 
-     src="/images/logo.png" 
-     class="cbf-icon" 
-     title="Completed with CBF">
+                                    <a class="type-label-lg" target="_blank" :href="score.link">{{ score.level }} ({{ score.percent }}%)</a>
                                 </td>
                                 <td class="score">
                                 <p v-if="score.score > 0" class="type-label-lg">+{{ localize(score.score) }}</p>
@@ -145,13 +136,6 @@ export default {
     methods: {
         localize,
         getYoutubeIdFromUrl,
-        cleanName(name) {
-        if (!name) return "";
-        return name.replace(/\(cbf\)/ig, "").trim();
-          },
-        isCBF(record) {
-    return record && record.cbf === true;
-       },
     },
 };
 export async function resetLeaderboard() {
