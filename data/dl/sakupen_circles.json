@@ -15,7 +15,8 @@
       "user": "cursed",
     "link": "https://youtu.be/VKbsTIFSKP4?si=6pv1U6rTjDOhSlsP",
     "percent": 100,
-    "hz": 360
+    "hz": 360,
+    "cbf": true
     }
   ]
 }
