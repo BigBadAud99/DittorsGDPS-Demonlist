@@ -89,7 +89,7 @@ export default {
                             <td class="user">
                                 <a :href="record.link" target="_blank" class="type-label-lg">{{ record.user }}</a> <img
                                     v-if="record.cbf"
-                                    @click="openCBFmodal"
+                                    @click="openCBFModal"
                                     src="/images/logo.png"
                                     class="cbf-icon"
                                     title="Uses CBF"
