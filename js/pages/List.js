@@ -175,7 +175,7 @@ export default {
         store,
         toggledShowcase: false,
         searchQuery: "",
-        showCBF: false.
+        showCBF: false,
     }),
     computed: {
   level() {
