@@ -291,7 +291,7 @@ input[type="checkbox"] {
     display: flex;
     align-items: center;
     flex-wrap: wrap; /* so creators still break nicely */
-    gap: 6px;
+    gap: 3px;
 }
 
 .records .user {
