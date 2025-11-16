@@ -160,6 +160,8 @@ export default {
                 <div class="cbf-modal-content">
                     <p>This user uses Click Between Frames to verify/complete the level.</p>
                     <button class="btn-close" @click="showCBF = false">OK</button>
+                </div>
+            </div>
          </template>
         </main>
     `,
