@@ -32,10 +32,10 @@ export default {
             </div>
                 <table class="list" v-if="Array.isArray(filteredList) && filteredList.length">
                     <tr v-for="([level, err, originalIndex], i) in filteredList" :key="i">
-                        <td class="rank">
-                            <p v-if="i + 1 <= 150" class="type-label-lg">#{{ i + 1 }}</p>
-                            <p v-else class="type-label-lg">Legacy</p>
-                        </td>
+                       <td class="rank">
+                          <p v-if="!searchQuery && i + 1 <= 150" class="type-label-lg">#{{ i + 1 }}</p>
+                          <p v-else-if="!searchQuery" class="type-label-lg">Legacy</p>
+                       </td>
                         <td class="level" :class="{ 'active': selected == i, 'error': !level }">
                             <button class="btn-no-cover" @click="selected = originalIndex">
                                 <span class="type-label-lg">{{ level?.name || \`Error (\${err}.json)\` }}</span>
