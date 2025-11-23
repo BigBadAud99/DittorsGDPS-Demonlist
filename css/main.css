@@ -200,21 +200,22 @@ input[type="checkbox"] {
     opacity: 1;
     height: 100px;
 }
+.list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .search-bar {
-    margin: 20px;
-    display: flex;
-    justify-content: center;
+  width: 100%;
 }
+
 .search-input {
-    width: 80%;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    background-color: var(--color-background-hover);
-    color: var(--color-on-background);
-    transition:background 0.3s;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 6px;
 }
+
 .search-input:focus {
     outline: none;
     background-color: var(--color-background);
@@ -247,7 +248,4 @@ input[type="checkbox"] {
     color: var(--color-extended);
     font-weight: bold;
     font-size: 0.9em;
-}
-.list .rank {
-  width: 60px; /* fixed width so it doesn’t collapse */
 }
