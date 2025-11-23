@@ -31,13 +31,13 @@ export default {
                 />
             </div>
                 <table class="list" v-if="Array.isArray(filteredList) && filteredList.length">
-                    <tr v-for="([level, err], i) in filteredList" :key="i">
+                    <tr v-for="([level, err, originalIndex], i) in filteredList" :key="i">
                         <td class="rank">
                             <p v-if="i + 1 <= 150" class="type-label-lg">#{{ i + 1 }}</p>
                             <p v-else class="type-label-lg">Legacy</p>
                         </td>
                         <td class="level" :class="{ 'active': selected == i, 'error': !level }">
-                            <button class="btn-no-cover" @click="selected = i">
+                            <button class="btn-no-cover" @click="selected = originalIndex">
                                 <span class="type-label-lg">{{ level?.name || \`Error (\${err}.json)\` }}</span>
                             </button>
                         </td>
@@ -179,11 +179,17 @@ export default {
     );
   },
   filteredList() {
-    if (!Array.isArray(this.list)) return [];
-    if (!this.searchQuery) return this.list;
-    const q = this.searchQuery.toLowerCase();
-    return this.list.filter(([level, err]) => level && level.name.toLowerCase().includes(q));
-  },
+  if (!Array.isArray(this.list)) return [];
+  if (!this.searchQuery) {
+    // include index when search is empty
+    return this.list.map((item, i) => [item[0], item[1], i]);
+  }
+
+  const q = this.searchQuery.toLowerCase();
+  return this.list
+    .map(([level, err], i) => [level, err, i])
+    .filter(([level]) => level && level.name.toLowerCase().includes(q));
+},
 },
     async mounted() {
         store.list = this;
