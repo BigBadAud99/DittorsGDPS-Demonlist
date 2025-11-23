@@ -248,3 +248,6 @@ input[type="checkbox"] {
     font-weight: bold;
     font-size: 0.9em;
 }
+.list .rank {
+  width: 60px; /* fixed width so it doesn’t collapse */
+}
