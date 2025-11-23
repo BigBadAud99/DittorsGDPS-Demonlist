@@ -21,8 +21,7 @@ export default {
             <Spinner></Spinner>
         </main>
         <main v-else class="page-list">
-            <div class="list-container">
-            <div class="search-bar">
+        <div class="search-bar">
               <input
                 v-model="searchQuery"
                 type="text"
@@ -30,6 +29,7 @@ export default {
                 class="search-input"
                 />
             </div>
+            <div class="list-container">
                 <table class="list" v-if="Array.isArray(filteredList) && filteredList.length">
                     <tr v-for="([level, err, originalIndex], i) in filteredList" :key="i">
                        <td class="rank">
