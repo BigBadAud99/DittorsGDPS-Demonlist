@@ -37,7 +37,7 @@ export default {
                           <p v-else-if="!searchQuery" class="type-label-lg">Legacy</p>
                        </td>
                         <td class="level" :class="{ 'active': selected == i, 'error': !level }">
-                            <button class="btn-no-cover" @click="selected = originalIndex">
+                            <button class="btngl" @click="selected = originalIndex">
                                 <span class="type-label-lg">{{ level?.name || \`Error (\${err}.json)\` }}</span>
                             </button>
                         </td>
